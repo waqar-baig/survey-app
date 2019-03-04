@@ -1,0 +1,9 @@
+<p>
+  <%= question.question_type.titleize %>
+  <%= question.is_required? ? 'Required' : 'Optional' %>
+  <strong>Title:</strong>
+  <%= question.title %>
+</p>
+
+<hr>
+<%= render "questions/answer_#{question.question_type}", question: question %>

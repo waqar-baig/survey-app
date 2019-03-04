@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question_answer.question %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @question_answer.rating %>
+</p>
+
+<p>
+  <strong>Answer label:</strong>
+  <%= @question_answer.answer_label %>
+</p>
+
+<p>
+  <strong>Merchant:</strong>
+  <%= @question_answer.merchant %>
+</p>
+
+<%= link_to 'Edit', edit_question_question_answer_path(@question_answer.question, @question_answer) %> |

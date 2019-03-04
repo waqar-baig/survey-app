@@ -1,0 +1,11 @@
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">
+    <%= question.title %>
+  </div>
+  <div class="card-body">
+    <%= f.input :question_id, as: :hidden, input_html: { value: question.id } %>
+    <%= f.input :question_id, as: :hidden %>
+    <%= f.input :feedback_id, as: :hidden %>
+    <%= render partial: "survey/answer_#{question.question_type}", locals: { question: question, f: f } %>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+$('#question-<%= @question.id %>').replaceWith("<%= escape_javascript(render @question, feedback_form: @feedback_form, editable: true) %>").fadeIn('slow');

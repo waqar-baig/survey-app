@@ -1,0 +1,23 @@
+<div class="row">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Feedback</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @feedback_forms.each do |feedback| %>
+        <tr>
+          <td><%= feedback.title %></td>
+          <td><%= link_to 'Send',
+            send_feedback_form_customer_path(@customer, feedback_form_id: feedback.id),
+            method: :post,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-success btn-sm' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+<% answers = question[1] %>
+<% question = question[0] %>
+
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">
+    <%= question.title %>
+  </div>
+  <div class="card-body">
+    <% if question.open_ended? %>
+      <%= answers[0].value %>
+    <% elsif question.rating? %>
+      <%= answers[0].rating %>
+    <% elsif question.multiple_choice? -%>
+      <ul>
+      <% answers.each do |answer| %>
+        <li><%= answer.question_answer.answer_label %></li>
+      <% end %>
+      </ul>
+    <% end -%>
+  </div>
+</div>

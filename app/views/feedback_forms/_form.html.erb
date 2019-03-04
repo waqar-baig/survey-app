@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@feedback_form) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :status, collection: FeedbackForm.statuses.keys, label_method: :titleize, prompt: 'Select Status' %>
+    <%= f.association :merchant, prompt: 'Select Merchant' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success btn-xs' %>
+  </div>
+
+<% end %>
+<div class="questions-container">
+  <%= render 'question_fields', feedback_form: @feedback_form, editable: true unless @feedback_form.new_record? %>
+</div>

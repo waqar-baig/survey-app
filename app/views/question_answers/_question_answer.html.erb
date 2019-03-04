@@ -1,0 +1,25 @@
+<% if question.rating? %>
+  <% question_answer.rating.times do |i| %>
+    <div class="rating">
+      <input type="radio" name="rating" disabled>
+      <strong>
+        <%= i + 1 %>
+      </strong>
+    </div>
+  <% end %>
+<% end %>
+
+<% if question.multiple_choice? %>
+  <p>
+    <input type="checkbox" name="multiple-choice" disabled>
+    <strong>
+      <%= question_answer.answer_label %>
+    </strong>
+  </p>
+<% end %>
+
+<% if question.open_ended? %>
+  <p>
+    <textarea disabled placeholder="Enter your comment here"></textarea>
+  </p>
+<% end %>

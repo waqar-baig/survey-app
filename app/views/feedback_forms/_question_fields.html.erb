@@ -1,0 +1,3 @@
+<%= link_to 'Add Question', new_feedback_form_question_path(feedback_form), remote: true, class: 'btn btn-info' %>
+<div id="add-new-question"></div>
+<%= render feedback_form.questions, feedback_form: feedback_form, editable: editable %>

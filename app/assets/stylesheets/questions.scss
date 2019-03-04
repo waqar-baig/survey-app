@@ -1,0 +1,9 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.question-box, .question-answers .nested-fields {
+  padding: 30px;
+  border: 1px dashed grey;
+  border-radius: 10px;
+  margin: 10px 0px;
+}

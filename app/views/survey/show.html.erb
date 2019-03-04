@@ -1,0 +1,11 @@
+<h1>Welcome <%= @feedback.customer.name %>,</h1>
+<p>Here is a small survey about <%= @feedback.feedback_form.title %></p>
+<%= simple_form_for @feedback, url: survey_path(@feedback) do |f| %>
+  <%= f.input :id, as: :hidden %>
+  <%= f.simple_fields_for :feedback_answers do |ff| %>
+    <%= render partial: 'survey/question', locals: { f: ff, question: ff.object.question } %>
+  <% end -%>
+  <div class="mt-3">
+    <%= f.button :button, "Submit", class: 'btn btn-success btn-sm' %>
+  </div>
+<% end -%>

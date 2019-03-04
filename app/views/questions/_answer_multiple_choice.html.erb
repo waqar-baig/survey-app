@@ -1,0 +1,6 @@
+<%= link_to 'Add Option', new_question_question_answer_path(question) %>
+<ul class="list">
+<% question.question_answers.each do |answer| %>
+  <li><%= answer.answer_label %></li>
+<% end -%>
+</ul>

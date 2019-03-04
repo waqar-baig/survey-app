@@ -1,0 +1,6 @@
+<h1>Hello <%= @customer.name %></h1>
+
+<p>
+  We have shared a feedback link for <%= @feedback_form.title %>.
+  <%= link_to 'Click here', tiny_url(@feedback.id) %>
+</p>

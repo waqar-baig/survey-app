@@ -1,0 +1,1 @@
+<%= f.input :value, label: false, as: :check_boxes, collection: question.question_answers.pluck(:answer_label, :id) %>

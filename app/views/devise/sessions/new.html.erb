@@ -1,0 +1,14 @@
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :inline_form) do |f| %>
+  <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <%= f.input :email, lable: 'Email Address', required: true, autofocus: true, placeholder: 'Email address', wrapper: false %>
+  <%= f.input :password,
+              required: false,
+              placeholder: 'Password',
+              wrapper: false,
+              input_html: { autocomplete: "current-password" } %>
+  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+  <%= f.button :submit, "Log in", class: 'btn btn-lg btn-primary btn-block' %>
+<% end %>
+<%= render "devise/shared/links" %>

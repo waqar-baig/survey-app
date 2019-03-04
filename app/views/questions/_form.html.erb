@@ -1,0 +1,53 @@
+<div class="">
+  <%= simple_form_for([@feedback_form, @question], remote: true) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :question_type, collection: Question.question_types.keys, label_method: :titleize, prompt: 'Select question type' %>
+      <%= f.input :is_required, as: :boolean %>
+    </div>
+    <%#= f.input :feedback_form_id, as: :hidden, input_html: { value: @feedback_form.id } %>
+    <div class="question-answers">
+      <%= f.simple_fields_for :question_answers do |ff| %>
+        <%= render 'question_answer_fields', f: ff %>
+      <% end -%>
+      <div class="links">
+        <%= link_to_add_association 'Add Option', f, :question_answers, class: (f.object.multiple_choice? ? '' : 'hidden') %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
+<script>
+  $(function() {
+    $('.question-answers').on('cocoon:before-insert', function(e, insertedItem) {
+      alert('inserted')
+      insertedItem.find('.question_question_answers_rating').addClass('hidden')
+      insertedItem.find('.question_question_answers_answer_label').removeClass('hidden')
+    });
+    $('select#question_question_type').change(function(){
+      var formEl = $(this).closest('form');
+      if ($(this).val() == 'rating') {
+        $('.nested-fields:gt(0)', formEl.find('.question-answers')).remove()
+        formEl.find('.question-answers').removeClass('hidden')
+        formEl.find('.question_question_answers_answer_label').addClass('hidden')
+        formEl.find('.question_question_answers_rating').removeClass('hidden')
+        formEl.find('.add_fields').addClass('hidden')
+        formEl.find('.remove_fields').addClass('hidden')
+      } else if($(this).val() == 'multiple_choice'){
+        formEl.find('.question-answers').removeClass('hidden')
+        formEl.find('.question_question_answers_answer_label').removeClass('hidden')
+        formEl.find('.question_question_answers_rating').addClass('hidden')
+        formEl.find('.add_fields').removeClass('hidden')
+        formEl.find('.remove_fields').removeClass('hidden')
+      } else {
+        formEl.find('.question-answers').addClass('hidden')
+      }
+    })
+  })
+</script>

@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 group :development, :test do
+  gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -26,9 +27,14 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'high_voltage'
 gem 'jquery-rails'
 gem 'mysql2', '~> 0.3.18'
+gem 'devise'
+gem 'simple_form'
+gem 'cocoon'
+gem 'reform-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 group :development do
-  gem 'better_errors'
+  gem 'letter_opener'
+  # gem 'better_errors'
   gem 'rails_layout'
 end

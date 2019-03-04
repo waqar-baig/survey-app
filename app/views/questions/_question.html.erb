@@ -1,0 +1,10 @@
+<div id="question-<%= question.id %>" class="question-box">
+  <div><strong><%= question.question_type.titleize %></strong></div>
+  <div><strong><%= question.is_required? ? 'Required' : 'Optional' %></strong></div>
+  <p><strong>Title:</strong> <%= question.title %></p>
+  <%= link_to 'Edit', edit_feedback_form_question_path(feedback_form, question), remote: true, class: 'btn btn-info btn-sm' if editable %>
+  <%= link_to 'Delete', feedback_form_question_path(feedback_form, question), remote: true, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?'}, method: :delete if editable %>
+  <hr>
+  <%= render question.question_answers, question: question unless question.open_ended? %>
+  <%= render 'question_answers/question_answer', question: question if question.open_ended? %>
+</div>

@@ -1,0 +1,1 @@
+$('.questions-container').html("<%= escape_javascript(render 'feedback_forms/question_fields', feedback_form: @feedback_form, editable: true) %>").fadeIn('slow');

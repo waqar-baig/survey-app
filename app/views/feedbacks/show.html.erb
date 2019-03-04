@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Feedback form:</strong>
+  <%= @feedback.feedback_form.title %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @feedback.customer.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @feedback.status.titleize %>
+</p>
+<% if @feedback.completed? %>
+  <p>
+    <strong>Completed Date:</strong>
+    <%= @feedback.completed_at.to_s(:pretty) %>
+  </p>
+  <%= render partial: 'question', collection: @feedback.feedback_answers.group_by(&:question), as: :question %>
+<% end -%>

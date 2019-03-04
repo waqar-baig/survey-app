@@ -1,0 +1,8 @@
+<div class="nested-fields <%= f.object.question.open_ended? ? 'hidden' : '' %>">
+  <%= f.input :rating, label: 'Rating out of?',
+   input_html: { value: 5, step: 5, min: 5, max: 10 }, wrapper_html: { class: (f.object.question.rating? ? '' : 'hidden') } %>
+  <%= f.input :answer_label, label: 'Option Text', wrapper_html: { class: (f.object.question.multiple_choice? ? '' : 'hidden') } %>
+  <%= f.input :id, as: :hidden, input_html: { value: f.object.id } %>
+  <%= f.input :merchant_id, as: :hidden, input_html: { value: current_merchant.id } %>
+  <%= link_to_remove_association "Remove", f, class: "btn btn-danger btn-sm #{f.object.question.multiple_choice? ? '' : 'hidden'}" %>
+</div>
