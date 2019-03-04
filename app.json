@@ -1,0 +1,7 @@
+{
+  "name": "Rails Survey App",
+  "description": "A tiny survey app using Rails 5",
+  "repository": "https://github.com/waqar-baig/survey-app",
+  "logo": "https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg",
+  "keywords": ["ruby", "rails", "mysql"]
+}
